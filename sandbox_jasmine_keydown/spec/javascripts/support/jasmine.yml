@@ -1,0 +1,8 @@
+src_files:
+    - public/javascripts/**/*.js
+
+helpers:
+  - 'helpers/**/*.js'
+
+spec_files:
+  - '**/*[sS]pec.js'
