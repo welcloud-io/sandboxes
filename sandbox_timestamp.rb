@@ -22,3 +22,9 @@ puts
 puts
 10.times do puts Time.now.to_f end
 
+puts
+puts Time.at(1387370361.1313498)
+puts Time.at(1387370371.539212)
+puts Time.at(1387370371.539212) - Time.at(1387370361.1313498)
+
+
