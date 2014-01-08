@@ -33,11 +33,24 @@ get '/radio_button_form' do
 	
 end
 
+get '/field' do
+
+  '<textarea id="TEXTAREA_ID"></textarea>
+  '
+ 
+end
+
+get '/button' do
+	
+  "<input type='button' id='BUTTON_ID' value='BEFORE_CLICK' onclick=\"this.value='AFTER_CLICK'\">"
+
+end
+
 # -----------------------------------
 
 Capybara.app = Sinatra::Application.new
 
-describe 'Page Content', :type => :feature do
+describe 'Page With NO Javascript', :type => :feature do
 	
   before(:each) do # :all is another possible value
   end
@@ -80,7 +93,32 @@ describe 'Page Content', :type => :feature do
     
   end
   
+  it 'should fill in a field' do
+    
+    visit '/field'
+    
+    expect(page).to have_field 'TEXTAREA_ID', :with => ""
+    fill_in 'TEXTAREA_ID', :with => "Something"
+    expect(page).to have_field 'TEXTAREA_ID', :with => "Something"
+
+  end
+
   after(:each) do # :all is another possible value
+  end
+
+end
+
+describe 'Page With Javascript', :type => :feature, :js => true do  
+
+  it 'should click on button' do
+    
+    visit '/button'
+
+    expect(find_button('BUTTON_ID').value).to eq 'BEFORE_CLICK'
+    expect(page).to have_button 'BUTTON_ID'
+    click_on 'BUTTON_ID'
+    expect(find_button('BUTTON_ID').value).to eq 'AFTER_CLICK'
+
   end
 
 end
