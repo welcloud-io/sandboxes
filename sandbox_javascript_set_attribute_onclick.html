@@ -1,0 +1,13 @@
+<html>
+  <body>
+
+  <input type="button" id="execute" value="EXECUTE (ALT-R)">
+
+  <script>
+    document.getElementById( "execute" ).setAttribute( "onClick", "javascript: Boo();" );
+    function Boo(){ alert("onclick affected"); }
+  </script>  
+  
+  </body>
+</html>
+

@@ -40,7 +40,7 @@ describe("TeacherSlideShow key management :", function() {
     __triggerKeyboardEvent(document, RIGHT_ARROW); // should call event only one time but we now have 2 slideshows with the event in memory
 
     expect(TeacherSlideShow.prototype.handleKeys).toHaveBeenCalled();
-    expect(TeacherSlideShow.prototype.handleKeys.calls.length).toBe(1);
+    expect(TeacherSlideShow.prototype.handleKeys.calls.length).toBe(1); // should be one but we have 2 ??
 
   });	   
 
