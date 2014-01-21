@@ -11,7 +11,7 @@
         left: 0;
         display:block;
         width:50%; 
-        height:40%;	
+        height:20%;	
     }
 </style>
 </head>
@@ -22,6 +22,19 @@ def fonction
   puts "RUBY"
 end
 </div>
+<div>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+<input type="button" id="execute" value="EXECUTE (ALT-R)" onclick="execute()">
+</div>
     
 <script src="ace-builds/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
 <script>
@@ -29,6 +42,10 @@ end
     editor.setTheme("ace/theme/monokai");
     editor.getSession().setMode("ace/mode/ruby");
     //~ editor.setReadOnly(true);
+    code = editor.getValue(); 
+    function execute() {
+      alert(editor.getValue());
+    }
 </script>
 </body>
 </html>
