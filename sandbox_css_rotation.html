@@ -212,7 +212,7 @@ div.slide > h2 {  /* Subtitle */
 	<ul>
 	<li><a href='index.html'>Blog</a></li>
 	<li><a href='../formations/index.html'>Formations</a></li>
-	<li><button id="go_to_application">Flip page</button></li>
+  <li><a href='#' onclick="showApplication()">Application Web &gt;&gt; </a></li>
 	</ul>
 	</nav>	
 
@@ -227,7 +227,7 @@ div.slide > h2 {  /* Subtitle */
 
 	<div class="presentation">
 	  <div class="slide current">
-		<section><h2>BIENVENUE</h2><button id="go_to_site">Flip page</button></section>
+		<section><h2>BIENVENUE</h2><button onclick="showSite()">Flip page</button></section>
 	  </div>  <!--slide-->
 	</div> <!--presentation-->
 
@@ -239,41 +239,14 @@ div.slide > h2 {  /* Subtitle */
 
 <script>  
 
-Element.prototype.hasClassName = function (a) {
-    return new RegExp("(?:^|\\s+)" + a + "(?:\\s+|$)").test(this.className);
-};
+var showApplication = function() {
+  document.getElementById('page').className = "flipped";
+}
 
-Element.prototype.addClassName = function (a) {
-    if (!this.hasClassName(a)) {
-        this.className = [this.className, a].join(" ");
-    }
-};
+var showSite = function() {
+  document.getElementById('page').className = "";
+}
 
-Element.prototype.removeClassName = function (b) {
-    if (this.hasClassName(b)) {
-        var a = this.className;
-        this.className = a.replace(new RegExp("(?:^|\\s+)" + b + "(?:\\s+|$)", "g"), " ");
-    }
-};
-
-Element.prototype.toggleClassName = function (a) {
-  this[this.hasClassName(a) ? "removeClassName" : "addClassName"](a);
-};
-
-var init = function() {
-  var page = document.getElementById('page');
-  
-  document.getElementById('go_to_application').addEventListener( 'click', function(){
-    page.toggleClassName('flipped');
-  }, false);
-  
-  document.getElementById('go_to_site').addEventListener( 'click', function(){
-    page.toggleClassName('flipped');
-  }, false);  
-  
-};
-
-window.addEventListener('DOMContentLoaded', init, false);
 </script>
 
 </html>
