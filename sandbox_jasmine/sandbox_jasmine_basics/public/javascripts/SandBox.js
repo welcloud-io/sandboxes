@@ -6,7 +6,7 @@ SandBox.prototype = {
   },
 	  
   call_a_function_with_spied_function_in_it: function() {
-	this.spied_function();
+	return this.spied_function();
   },
   
 }
