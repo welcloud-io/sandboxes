@@ -35,6 +35,10 @@
   
 }
 
+#articles.hidden {
+  display: none;
+}
+
 #page div.back {
   -webkit-transform: rotateY( 180deg );
 	 -moz-transform: rotateY( 180deg );
@@ -219,6 +223,19 @@ div.slide > h2 {  /* Subtitle */
 	<div id='articles'>
 	<section><h3>Article 1</h3><article><p>Article 1</p></article></section>	  
 	<section><h3>Article 2</h3><article><p>Article 2</p></article></section>	
+	<section><h3>Article 2</h3><article><p>Article 2</p></article></section>	
+	<section><h3>Article 2</h3><article><p>Article 2</p></article></section>	
+	<section><h3>Article 2</h3><article><p>Article 2</p></article></section>	
+	<section><h3>Article 2</h3><article><p>Article 2</p></article></section>	
+	<section><h3>Article 2</h3><article><p>Article 2</p></article></section>	
+	<section><h3>Article 2</h3><article><p>Article 2</p></article></section>	
+	<section><h3>Article 2</h3><article><p>Article 2</p></article></section>	
+	<section><h3>Article 2</h3><article><p>Article 2</p></article></section>	
+	<section><h3>Article 2</h3><article><p>Article 2</p></article></section>	
+	<section><h3>Article 2</h3><article><p>Article 2</p></article></section>	
+	<section><h3>Article 2</h3><article><p>Article 2</p></article></section>	
+	<section><h3>Article 2</h3><article><p>Article 2</p></article></section>	
+	<section><h3>Article 2</h3><article><p>Article 2</p></article></section>	
 	</div> <!-- articles -->
 
 </div> <!--front-->
@@ -240,11 +257,13 @@ div.slide > h2 {  /* Subtitle */
 <script>  
 
 var showApplication = function() {
+  document.getElementById('articles').className = "hidden";
   document.getElementById('page').className = "flipped";
 }
 
 var showSite = function() {
   document.getElementById('page').className = "";
+  document.getElementById('articles').className = "";  
 }
 
 </script>
