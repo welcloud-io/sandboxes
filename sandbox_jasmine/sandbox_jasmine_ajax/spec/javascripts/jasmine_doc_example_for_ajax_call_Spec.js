@@ -1,4 +1,4 @@
-
+// JASMINE DOC EXAMPLE FOR AJAX CALL
 
 describe("mocking ajax", function() {
 
