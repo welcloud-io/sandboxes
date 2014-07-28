@@ -29,9 +29,11 @@ Slide.prototype = {
 // SLIDESHOW CLASS
 // ----------------------------------  
 var SlideShow = function(slides) {
-
+  
+  this.initEvents();
+  
   this._slides = (slides).map(function(element) {
-	    
+
     return new Slide(element);
 
   });
@@ -48,7 +50,11 @@ var SlideShow = function(slides) {
 SlideShow.prototype = {
 	
   _currentIndex : 0,
-  _numberOfSlides : 0,	
+  _numberOfSlides : 0,
+
+  initEvents: function() {
+
+  }, 	
 	
   next: function() {
 	    
