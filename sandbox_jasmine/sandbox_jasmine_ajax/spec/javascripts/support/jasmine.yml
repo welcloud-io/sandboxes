@@ -11,6 +11,7 @@
 #   - dist/**/*.js
 #
 src_files:
+  - spec/javascripts/helpers/mock-ajax.js
   - public/javascripts/**/*.js
 
 # stylesheets

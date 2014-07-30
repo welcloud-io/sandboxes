@@ -1,11 +1,11 @@
-// STACKOVERFLOW EXAMPLE FOR AJAX CALL (3 WAYS)
+// STACKOVERFLOW EXAMPLE FOR AJAX CALL (3 WAYS) with jasmine (1.3)
 
 describe('Ajax Fake', function() {
 
   it("should make an AJAX request to the correct URL", function() {
       spyOn($, "ajax");
       getProduct(123);
-      expect($.ajax.calls.mostRecent().args[0]["url"]).toEqual("/products/123");
+      expect($.ajax.mostRecentCall.args[0]["url"]).toEqual("/products/123");
   });
 
   function getProduct(id) {
@@ -20,7 +20,7 @@ describe('Ajax Fake', function() {
 describe('Ajax callback Fake', function() {
   
   it("should execute the callback function on success", function () {
-      spyOn($, "ajax").and.callFake(function(options) {
+      spyOn($, "ajax").andCallFake(function(options) {
           options.success();
       });
       var callback = jasmine.createSpy();
@@ -66,12 +66,13 @@ var getResource = function(path, synchronous_asynchronous, callback) {
 describe('Ajax Async', function() {
   
     beforeEach(function() {
-      requeteOK = jasmine.createSpy().and.returnValue(true);
+      requeteOK = jasmine.createSpy().andReturn(true);
       callback = jasmine.createSpy();
     });  
 
-  it("should make a real AJAX request", function (callback) {
-      //~ var callback = jasmine.createSpy(); // //////// JASMINE 1.3
+  it("should make a real AJAX request", function () {
+      // ONLY WORKS IF A SERVER IS RUNNING (DOES NOT WORK YET)
+      //~ var callback = jasmine.createSpy(); 
       //~ getProduct(123, callback);
       //~ waitsFor(function() {
           //~ return callback.callCount > 0;
@@ -80,13 +81,13 @@ describe('Ajax Async', function() {
       //~ expect(callback).toHaveBeenCalled();
       //~ });
       getResource('info', ASYNCHRONOUS, callback)
-      //~ expect(callback).toHaveBeenCalled();
+      expect(callback).toHaveBeenCalled();
   });
 
   function getProduct(id, callback) {
       $.ajax({
           type: "GET",
-          url: "data.json",
+          url: "http://localhost:4567/info",
           success: callback
       });
   }
