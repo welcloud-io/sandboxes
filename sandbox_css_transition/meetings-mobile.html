@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name='viewport' content='user-scalable=no,width=device-width' />
+  
+  <style>
+    
+    .frame {
+      position: absolute;
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
+      top: 0px;
+      left: 0px;
+      background-color:#1c1828;      
+    }
+    
+    .day {  
+      position: absolute;    
+      background:#c9c3e6;
+      width: 98%;
+      height: 98%;
+    }
+
+    .visible {
+      visibility: visible;
+      margin-top: 1%;
+      margin-left: 1%;
+      transition:margin 1.5s;
+    }
+    
+    .unvisible {
+      visibility: hidden;
+    }
+    
+    .left {
+      margin-top: 1%;      
+      margin-left: -100%;
+    }
+    
+    .right {
+      margin-top: 1%;
+      margin-left: 100%;
+    }
+  
+  </style>
+  
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="jqueryplugin/jquery.touchSwipe.js" type="text/javascript" charset="utf-8"></script>
+  
+  <script>
+  
+  var _t = this;    
+  document.addEventListener('keydown', function(e) { 
+    if (e.keyCode == 39) next_day();
+    if (e.keyCode == 37) previous_day();
+  }, false );
+
+  
+  // ------------------------------
+  // Day Navigation
+  // ------------------------------ 
+  
+  days = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"]
+  current_day_index = 0;
+  first_day_index = 0;
+  last_day_index = days.length - 1;
+  
+  function next_day() {
+    if (current_day_index >= last_day_index) return;
+    document.getElementById(days[current_day_index]).className = 'day unvisible left'; 
+    document.getElementById(days[current_day_index + 1]).className = 'day visible';
+    current_day_index += 1;
+  }
+  
+  function previous_day() {
+    if (current_day_index <= first_day_index) return;
+    document.getElementById(days[current_day_index - 1]).className = 'day visible'; 
+    document.getElementById(days[current_day_index]).className = 'day unvisible right';
+    current_day_index -= 1;    
+  }
+  
+    $(function() {
+      $("#day_info").swipe( {
+        swipeRight:function(event, direction, distance, duration, fingerCount) {
+	   previous_day();
+        },
+        swipeLeft:function(event, direction, distance, duration, fingerCount) {
+	  next_day();
+        },	
+         threshold:25 //Default is 75px
+      });      
+    });
+  </script>
+  
+  </head>
+  <body>
+    <div id="frame" class="frame">
+      <div id="day_info">
+        <div class="day visible" id="Lundi" ></div>
+        <div class="day unvisible right" id="Mardi"></div>
+        <div class="day unvisible right" id="Mercredi"></div>    
+        <div class="day unvisible right" id="Jeudi"></div>
+        <div class="day unvisible right" id="Vendredi"></div>   
+      </div> <!-- day info -->
+    </div> <!-- frame -->
+  </body>
+</html>
