@@ -1,0 +1,11 @@
+require 'jasmine'
+load 'jasmine/tasks/jasmine.rake'
+
+task :default => [:'jasmine:ci', :'test:acceptance']
+
+namespace :test do
+  task :acceptance, [:category,:subcategory] do |task, args|
+    specs = "*_spec.rb"
+    sh "cd spec/gui; rspec #{ specs }"
+  end
+end 
