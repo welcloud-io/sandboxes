@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+  <body>
+    COUNT = <span id="count">0</span>
+    
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script>
+      var socket = io();
+      socket.on('chat message', function(msg){
+        var current_value = parseInt($('#count').text())+1;
+        $('#count').text(current_value);
+      });
+    </script>    
+
+  </body>
+</html>
