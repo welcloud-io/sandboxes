@@ -82,22 +82,29 @@
     current_day_index -= 1;    
   }
   
-    $(function() {
-      $("#day_info").swipe( {
-        swipeRight:function(event, direction, distance, duration, fingerCount) {
-	   previous_day();
-        },
-        swipeLeft:function(event, direction, distance, duration, fingerCount) {
-	  next_day();
-        },	
-         threshold:25 //Default is 75px
-      });      
-    });
   </script>
+  
+<!--  <script src="https://code.jquery.com/jquery-1.12.2.min.js"></script>
+  <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+-->
+
+  <script src="jqueryplugin/jquery-1.12.2.min.js"></script>
+  <script src="jqueryplugin/jquery.mobile-1.4.5.min.js"></script>
+
+  <script>
+  $(document).on("pagecreate","#pageone",function(){
+      $("#day_info").on("swipeleft",function(){
+        next_day();
+      }); 
+      $("#day_info").on("swiperight",function(){
+        previous_day();
+      });      
+  }); 
+  </script>  
   
   </head>
   <body>
-    <div id="frame" class="frame">
+    <div class="frame" data-role="page" id="pageone">
       <div id="day_info">
         <div class="day visible" id="Lundi" ></div>
         <div class="day unvisible right" id="Mardi"></div>
